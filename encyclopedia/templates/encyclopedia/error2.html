@@ -1,0 +1,15 @@
+{% extends "encyclopedia/layout.html" %}
+{% load static %}
+
+{% block title %}
+    {{ Error }}
+{% endblock %}
+
+{% block body %}
+<div id="error">
+    <h1>Error 404: this page does not exist.</h1>
+    <br>
+    <a href="{% url 'create' %}"><h5>click here to make a new one.</h5></a>
+</div>
+
+{% endblock %}

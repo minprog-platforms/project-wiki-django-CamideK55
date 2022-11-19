@@ -12,9 +12,15 @@ h1 {
     padding-top: 20px;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 textarea {
-    height: 90vh;
+    height: 50vh;
     width: 80%;
+    margin-top: 2%;
 }
 
 .main {
@@ -35,4 +41,16 @@ textarea {
 
 .sidebar h2 {
     margin-top: 5px;
+}
+
+#name_page {
+    width: 20vw;
+}
+
+a{
+  text-decoration: none;
+}
+
+#error {
+    text-align: center;
 }
