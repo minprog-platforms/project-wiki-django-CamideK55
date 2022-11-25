@@ -6,22 +6,33 @@ from markdown2 import markdown
 
 from . import util
 
+
 def index(request):
+    return render(request, "encyclopedia/index.html", {
+    "entries": util.list_entries()
+    })
+
+def search(request):
     if request.method == "POST":
         title = request.POST["q"]
-        if title in util.list_entries():
-            content = util.get_entry(title)
+        content = util.get_entry(title)
+        if content is not None:
             return render(request, "encyclopedia/wiki.html", {
                 "title": title,
                 "content": markdown(content),
             })
-        else:
+        list_entries = util.list_entries()
+        list_results = []
+        for entry in list_entries:
+            if title in entry:
+                list_results.append(entry)
+        if len(list_results) == 0:
             return render(request, "encyclopedia/error2.html", {
             })
 
-    return render(request, "encyclopedia/index.html", {
-    "entries": util.list_entries()
-    })
+        return render(request, "encyclopedia/searchres.html", {
+            "entries": list_results
+        })
 
 def create(request):
     if request.method == "POST":
